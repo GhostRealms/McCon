@@ -1,0 +1,4 @@
+McCon
+=====
+
+Minecraft Economy Plugin
