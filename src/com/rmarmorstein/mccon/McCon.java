@@ -36,6 +36,7 @@ import com.rmarmorstein.mccon.external.Updater.UpdateResult;
 
 public class McCon extends JavaPlugin {
 	
+	private McCon mccon = this;
 	private Logger log;
 	
 	//Configuration Values
@@ -108,8 +109,7 @@ public class McCon extends JavaPlugin {
 		
 		log.info("Got the Economy values, grabbing Database info...");
 		
-		tablename = this.getConfig().getString("table-name");
-		createTables = "CREATE TABLE IF NOT EXISTS `" + tablename + "` (Username varchar(16), Balance number(32));";
+		createTables = "CREATE TABLE IF NOT EXISTS `mccon` (Username varchar(16), Balance number(32));";
 		
 		
 		String dbtype = this.getConfig().getString("database");
@@ -131,6 +131,8 @@ public class McCon extends JavaPlugin {
 			c = sql.openConnection();
 		}
 		
+		db db = new db(c, this);
+		
 		log.info("Database Connection has been established... Using: " + dbtype);
 		
 		try {
@@ -142,11 +144,19 @@ public class McCon extends JavaPlugin {
 			e.printStackTrace();
 		}
 		
+		log.info("Registration of Commands and Listeners is now taking Place...");
+		
+		getCommand("balance").setExecutor(new Balance(mccon));
+		
 	}
 	
 	@Override
 	public void onDisable() {
 		
+	}
+	
+	public double getDefaultBalance() {
+		return defaultbal;
 	}
 	
 
