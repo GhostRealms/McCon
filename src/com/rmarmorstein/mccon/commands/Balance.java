@@ -1,8 +1,10 @@
-package com.rmarmorstein.mccon;
+package com.rmarmorstein.mccon.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
+import com.rmarmorstein.mccon.McCon;
 
 public class Balance implements CommandExecutor {
 	

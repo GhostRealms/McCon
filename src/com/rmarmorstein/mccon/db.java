@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import org.bukkit.plugin.Plugin;
 
@@ -36,6 +37,25 @@ public class db {
 		}
 		return balance;
 		
+	}
+	
+	public void setBalance(String user, double amount) throws SQLException {
+		Statement st = c.createStatement();
+		st.executeUpdate("INSERT INTO mccon(username, balance) VALUES ('" + user + "', '" + amount + "');");
+	}
+	
+	public void addBalance(String user, double amount) throws SQLException {
+		double oldbal = getBalance(user);
+		double newbal = oldbal + amount;
+		Statement st = c.createStatement();
+		st.executeUpdate("INSERT INTO mccon(username, balance) VALUES ('" + user + "', '" + newbal + "');");
+	}
+	
+	public void takeBalance(String user, double amount) throws SQLException {
+		double oldbal = getBalance(user);
+		double newbal = oldbal - amount;
+		Statement st = c.createStatement();
+		st.executeUpdate("INSERT INTO mccon(username, balance) VALUES ('" + user + "', '" + newbal + "');");
 	}
 
 }

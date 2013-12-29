@@ -28,6 +28,8 @@ import java.util.logging.Logger;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.rmarmorstein.mccon.commands.Balance;
+import com.rmarmorstein.mccon.commands.pay;
 import com.rmarmorstein.mccon.database.MySQL;
 import com.rmarmorstein.mccon.database.SQLite;
 import com.rmarmorstein.mccon.external.Metrics;
@@ -147,16 +149,30 @@ public class McCon extends JavaPlugin {
 		log.info("Registration of Commands and Listeners is now taking Place...");
 		
 		getCommand("balance").setExecutor(new Balance(mccon));
+		getCommand("pay").setExecutor(new pay(mccon));
 		
 	}
 	
 	@Override
 	public void onDisable() {
+		log.info("Attempting to close SQL connection...");
+		try {
+			c.close();
+		} catch (SQLException e) {
+			log.severe("Unable to close SQL connection! Please report!");
+			e.printStackTrace();
+		}
+		
+		log.info("SQL connection closed.. Disabling McCon!");
 		
 	}
 	
 	public double getDefaultBalance() {
 		return defaultbal;
+	}
+	
+	public void setBalance(String user, double bal) {
+		
 	}
 	
 
