@@ -171,9 +171,19 @@ public class McCon extends JavaPlugin {
 		return defaultbal;
 	}
 	
-	public void setBalance(String user, double bal) {
-		
+	public boolean getAllowNegativeBalance() {
+		return allownegbal;
 	}
 	
-
+	public double getMinimumBalance() {
+		if(allownegbal) {
+			return minbal;
+		} else {
+			return 0;
+		}
+	}
+	
+	public double getMaximumBalance() {
+			return maxbal;
+	}
 }

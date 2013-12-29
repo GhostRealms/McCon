@@ -47,6 +47,11 @@ public class db {
 	public void addBalance(String user, double amount) throws SQLException {
 		double oldbal = getBalance(user);
 		double newbal = oldbal + amount;
+		if(newbal > plugin.getMaximumBalance()) {
+			newbal = plugin.getMaximumBalance();
+		} else if(newbal < plugin.getMinimumBalance()) {
+			newbal = plugin.getMinimumBalance();
+		}
 		Statement st = c.createStatement();
 		st.executeUpdate("INSERT INTO mccon(username, balance) VALUES ('" + user + "', '" + newbal + "');");
 	}
@@ -54,8 +59,27 @@ public class db {
 	public void takeBalance(String user, double amount) throws SQLException {
 		double oldbal = getBalance(user);
 		double newbal = oldbal - amount;
+		if(newbal < plugin.getMinimumBalance()) {
+			
+		}
 		Statement st = c.createStatement();
 		st.executeUpdate("INSERT INTO mccon(username, balance) VALUES ('" + user + "', '" + newbal + "');");
+	}
+	
+	public boolean hasAccount(String user) { 
+		ResultSet rs;
+		try {
+			rs = c.createStatement().executeQuery("SELECT * FROM mccon WHERE username = '" + user + "';");
+			if(rs.getString("username") != null) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch(Exception ex) {
+			plugin.getLogger().severe("SQL Error querying for account..");
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }
