@@ -7,11 +7,11 @@ database: SQLite
 
 #MySQL Database Settings - Not Needed if using SQLite
 mysql:
-  host:
-  port:
-  user:
-  pass:
-  database:
+  host: '127.0.0.1'
+  port: 3306
+  user: mysqluser
+  pass: p@ssw0rd
+  database: imadatabase
 
 #Economy Settings
 currency-name: Dollar
@@ -31,3 +31,12 @@ min-balance: -10000.00
 
 #Maximum balance (set to -1 to disable [No Max])
 max-balance: -1
+
+#Please let us Exploit you for Statistical Purpouses ;)
+#We Collect no Data other than the normal Plugin-Metrics Stoof.
+#More info on Data-Collection here: http://goo.gl/wsMhVC
+metrics: true
+
+#Would you like us to Auto-magically update McCon when a new Version is found on dev.bukkit.org?
+#More information on Automatic Updates is found here: http://goo.gl/pHzqzR
+updater: true
