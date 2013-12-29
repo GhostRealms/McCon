@@ -1,0 +1,33 @@
+#McCon Configuration - Please follow the documentation through the Configuration
+#McCon is provided AS-IS without Warranty; Please See the GNU GPL v3 License for More details
+#Support is provided via GitHub @ https://github.com/Saes/McCon/issues
+
+#Database Type, Choose SQLite or MySQL - SQLite is the Default choice
+database: SQLite
+
+#MySQL Database Settings - Not Needed if using SQLite
+mysql:
+  host:
+  port:
+  user:
+  pass:
+  database:
+
+#Economy Settings
+currency-name: Dollar
+currency-plural: Dollars
+currency-symbol: $
+#Currency symbol can be set to 'NULL' to use the currency name.
+
+#default balance settings
+default-balance: 500.00
+
+#Don't store accounts in the database that have the default balance
+purge-accounts: true
+
+#Negative Account handling
+allow-negative: true
+min-balance: -10000.00
+
+#Maximum balance (set to -1 to disable [No Max])
+max-balance: -1
