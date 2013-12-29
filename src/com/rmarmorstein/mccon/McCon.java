@@ -5,16 +5,29 @@
  * The Wonderful contributors
  * @author River Marmorstein
  * @author Rmarmorstein
+ * 
+ * People who we stole stuff from ;)
+ * @author -_Husky_-
+ * MySQL and Sqlite
+ * 
+ * @author Hidendra
+ * Plugin Metrics
+ * 
+ * @author Gravity
+ * Bukkit auto-updater :)
  */
 
 
 
 package com.rmarmorstein.mccon;
 
+import java.sql.Connection;
 import java.util.logging.Logger;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.rmarmorstein.mccon.database.MySQL;
+import com.rmarmorstein.mccon.database.SQLite;
 import com.rmarmorstein.mccon.external.Metrics;
 import com.rmarmorstein.mccon.external.Updater;
 import com.rmarmorstein.mccon.external.Updater.UpdateResult;
@@ -32,7 +45,7 @@ public class McCon extends JavaPlugin {
 	//MySQL settings
 	public boolean usingmysql;
 	public String hostname;
-	public int port;
+	public String port;
 	public String username;
 	public String password;
 	public String databasename;
@@ -40,6 +53,10 @@ public class McCon extends JavaPlugin {
 	//Plugin Metrics and Updater Settings
 	private boolean exploitServerOwnersWithMetricsCollections;
 	private boolean shouldIUpdateForYouMaster;
+	
+	
+	//Database Connection (We need this or we're screwed)
+	public Connection c = null;
 	
 	@Override
 	public void onEnable() {
@@ -87,12 +104,14 @@ public class McCon extends JavaPlugin {
 		if(dbtype.toLowerCase().equals("mysql")) {
 			usingmysql = true;
 			log.info("We're Using MySQL! Initializing the Database now...");
+			MySQL sql = new MySQL(this, hostname, port, databasename, username, password);
+			c = sql.openConnection();
 		} else {
 			usingmysql = false;
 			log.info("We're Using SQLite! Initializing the Database now...");
+			SQLite sql = new SQLite(this, this.getDataFolder().toString());
+			c = sql.openConnection();
 		}
-		
-		
 		
 	}
 	
