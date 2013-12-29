@@ -22,6 +22,8 @@
 package com.rmarmorstein.mccon;
 
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Logger;
 
 import org.bukkit.plugin.java.JavaPlugin;
@@ -57,6 +59,10 @@ public class McCon extends JavaPlugin {
 	
 	//Database Connection (We need this or we're screwed)
 	public Connection c = null;
+	private String tablename = null;
+	
+	//Some SQL Queries here for Easy (Lazy) changing
+	String createTables;
 	
 	@Override
 	public void onEnable() {
@@ -93,6 +99,8 @@ public class McCon extends JavaPlugin {
 			log.info("You dont have Automatic updates enabled in the config.. Skipping this step.");
 		}
 		
+		log.info("Grabbing the Economy settings...");
+		
 		defaultbal = this.getConfig().getInt("default-balance");
 		minbal = this.getConfig().getInt("min-balance");
 		allownegbal = this.getConfig().getBoolean("allow-negative");
@@ -100,10 +108,20 @@ public class McCon extends JavaPlugin {
 		
 		log.info("Got the Economy values, grabbing Database info...");
 		
+		tablename = this.getConfig().getString("table-name");
+		createTables = "CREATE TABLE IF NOT EXISTS `" + tablename + "` (Username varchar(16), Balance number(32));";
+		
+		
 		String dbtype = this.getConfig().getString("database");
 		if(dbtype.toLowerCase().equals("mysql")) {
 			usingmysql = true;
 			log.info("We're Using MySQL! Initializing the Database now...");
+			hostname = this.getConfig().getString("mysql.host");
+			port = this.getConfig().getString("mysql.port");
+			databasename = this.getConfig().getString("mysql.database");
+			username = this.getConfig().getString("mysql.user");
+			password = this.getConfig().getString("mysql.pass");
+			
 			MySQL sql = new MySQL(this, hostname, port, databasename, username, password);
 			c = sql.openConnection();
 		} else {
@@ -111,6 +129,17 @@ public class McCon extends JavaPlugin {
 			log.info("We're Using SQLite! Initializing the Database now...");
 			SQLite sql = new SQLite(this, this.getDataFolder().toString());
 			c = sql.openConnection();
+		}
+		
+		log.info("Database Connection has been established... Using: " + dbtype);
+		
+		try {
+			Statement stmt = c.createStatement();
+			stmt.executeQuery(createTables);
+		} catch (SQLException e) {
+			log.severe("Database issues... :( Please report these.");
+			log.severe("COULD NOT CREATE STATEMENT.");
+			e.printStackTrace();
 		}
 		
 	}

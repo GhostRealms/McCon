@@ -5,6 +5,9 @@
 #Database Type, Choose SQLite or MySQL - SQLite is the Default choice
 database: SQLite
 
+#Change this only if you have a reason to.
+table-name: McCon
+
 #MySQL Database Settings - Not Needed if using SQLite
 mysql:
   host: '127.0.0.1'
