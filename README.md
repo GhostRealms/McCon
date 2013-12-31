@@ -5,10 +5,15 @@ McCon is a new Economy plugin for Bukkit. The concept is simplicity and ease of 
 ##Contributing to McCon
 We appretiate your contributions towards McCon! If you would like to help with the Development of McCon, please review the following information to insure that you are contributing!
 
+**If you would like to contribute code...**
 * Fork the Repo to your Own GitHub Account
 * Make Changes on **your repo**.
 * Make a **Pull Request** stating the changes and additions that you have made.
 * Wait for the Pull request to be accepted or denied.
+
+**Contributing other ways..**
+* The best way to help the project is to report issues and feature requests with the Issue Tracker here on github.
+* Paypal donations (rivermarmorstein@gmail.com) are also Accepted, if you must..
 
 ## Commands & Permissions
 ### Commands
