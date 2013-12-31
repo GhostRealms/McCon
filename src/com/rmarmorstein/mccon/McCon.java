@@ -150,6 +150,7 @@ public class McCon extends JavaPlugin {
 		
 		getCommand("balance").setExecutor(new Balance(mccon));
 		getCommand("pay").setExecutor(new pay(mccon));
+		getCommand("mccon").setExecutor(new com.rmarmorstein.mccon.commands.mccon(mccon));
 		
 	}
 	
