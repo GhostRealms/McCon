@@ -2,6 +2,14 @@ McCon
 =====
 McCon is a new Economy plugin for Bukkit. The concept is simplicity and ease of use. Other economy plugins are outdated, or have many issues, or they are built into other plugins and Don't have the features of a Stand-Alone Economy plugin. The Attempt of McCon is to create an Easy to use, lightweight economy plugin using SQLite, and possibly other Databases in the future.
 
+##Contributing to McCon
+We appretiate your contributions towards McCon! If you would like to help with the Development of McCon, please review the following information to insure that you are contributing!
+
+* Fork the Repo to your Own GitHub Account
+* Make Changes on **your repo**.
+* Make a **Pull Request** stating the changes and additions that you have made.
+* Wait for the Pull request to be accepted or denied.
+
 ## Commands & Permissions
 ### Commands
 * **/money** [Aliases: /bal, /balance] - Display your Balance
