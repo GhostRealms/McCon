@@ -6,7 +6,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.rmarmorstein.mccon.McCon;
-import com.rmarmorstein.mccon.Messages;
+import com.rmarmorstein.mccon.lang;
 
 public class mccon implements CommandExecutor {
 	
@@ -32,7 +32,7 @@ public class mccon implements CommandExecutor {
 					sender.sendMessage(ChatColor.GRAY + "[McCon] " + ChatColor.GREEN + "McCon was reloaded successfully.");
 					return true;
 				} else {
-					sender.sendMessage(Messages.no_perm);
+					sender.sendMessage(lang.no_perm);
 					return false;
 				}
 			} else if(args[0].equalsIgnoreCase("info")) {
@@ -41,11 +41,11 @@ public class mccon implements CommandExecutor {
 				sender.sendMessage(ChatColor.GRAY + "[McCon] " + ChatColor.WHITE + "The McCon project is Lead by " + ChatColor.RED + "Rmarmorstein");
 				return true;
 			} else {
-				sender.sendMessage(Messages.inv_args);
+				sender.sendMessage(lang.inv_args);
 				return false;
 			}
 		} else {
-			sender.sendMessage(Messages.inv_args);
+			sender.sendMessage(lang.inv_args);
 			return false;
 		}
 	}

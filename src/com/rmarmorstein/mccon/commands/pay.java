@@ -5,7 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import com.rmarmorstein.mccon.McCon;
-import com.rmarmorstein.mccon.Messages;
+import com.rmarmorstein.mccon.lang;
 
 public class pay implements CommandExecutor {
 	
@@ -21,7 +21,7 @@ public class pay implements CommandExecutor {
 			
 			return true;
 		} else {
-			sender.sendMessage(Messages.inv_args);
+			sender.sendMessage(lang.inv_args);
 			return false;
 		}
 	}

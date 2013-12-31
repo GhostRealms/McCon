@@ -133,6 +133,7 @@ public class McCon extends JavaPlugin {
 			c = sql.openConnection();
 		}
 		
+		@SuppressWarnings("unused")
 		db db = new db(c, this);
 		
 		log.info("Database Connection has been established... Using: " + dbtype);
@@ -152,6 +153,11 @@ public class McCon extends JavaPlugin {
 		getCommand("pay").setExecutor(new pay(mccon));
 		getCommand("mccon").setExecutor(new com.rmarmorstein.mccon.commands.mccon(mccon));
 		
+		log.info("Registration of Commands and Listeners Complete.");
+		
+		log.info("Getting the Language File...");
+		//TODO create & load language
+		
 	}
 	
 	@Override
@@ -166,6 +172,10 @@ public class McCon extends JavaPlugin {
 		
 		log.info("SQL connection closed.. Disabling McCon!");
 		
+	}
+	
+	public McCon getPlugin() {
+		return mccon;
 	}
 	
 	public double getDefaultBalance() {
