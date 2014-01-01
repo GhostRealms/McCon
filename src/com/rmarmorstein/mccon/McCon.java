@@ -59,7 +59,6 @@ public class McCon extends JavaPlugin {
 	private boolean exploitServerOwnersWithMetricsCollections;
 	private boolean shouldIUpdateForYouMaster;
 	
-	
 	//Database Connection (We need this or we're screwed)
 	public Connection c = null;
 	private String tablename = null;
@@ -111,8 +110,8 @@ public class McCon extends JavaPlugin {
 		
 		log.info("Got the Economy values, grabbing Database info...");
 		
-		createTables = "CREATE TABLE IF NOT EXISTS `mccon` (Username varchar(16), Balance number(32));";
 		
+		createTables = "CREATE TABLE IF NOT EXISTS `mccon` (Username varchar(16), Balance number(32));";
 		
 		String dbtype = this.getConfig().getString("database");
 		if(dbtype.toLowerCase().equals("mysql")) {

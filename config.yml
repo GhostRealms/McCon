@@ -43,3 +43,15 @@ opt-out: false
 #Would you like us to Auto-magically update McCon when a new Version is found on dev.bukkit.org?
 #More information on Automatic Updates is found here: http://goo.gl/pHzqzR
 updater: true
+
+#These Config values control what the plugin will output.
+lang:
+  prefix: '&a[Money]'
+  no-permission: '&cYou Dont Have Permission!'
+  invalid-arguments: '&cInvalid Arguments! Please Check command usage.'
+  payment: '&2You have paid [name] [amount]'
+  payment-received: '&2You have received [amount] from [from]'
+  payment-request: '&2[name] has requested [amount] from you for [reason]'
+  payment-request-noreason: '&2[name] has requested [amount]'
+  payment-error-insufficientfunds: '&4Error: &cInsufficient funds are in your account to complete the transaction'
+  
