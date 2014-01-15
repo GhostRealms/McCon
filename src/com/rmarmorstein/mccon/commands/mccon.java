@@ -32,7 +32,7 @@ public class mccon implements CommandExecutor {
 					sender.sendMessage(ChatColor.GRAY + "[McCon] " + ChatColor.GREEN + "McCon was reloaded successfully.");
 					return true;
 				} else {
-					sender.sendMessage(lang.no_perm);
+					sender.sendMessage(lang);
 					return false;
 				}
 			} else if(args[0].equalsIgnoreCase("info")) {
@@ -41,7 +41,7 @@ public class mccon implements CommandExecutor {
 				sender.sendMessage(ChatColor.GRAY + "[McCon] " + ChatColor.WHITE + "The McCon project is Lead by " + ChatColor.RED + "Rmarmorstein");
 				return true;
 			} else {
-				sender.sendMessage(lang.inv_args);
+				sender.sendMessage("");
 				return false;
 			}
 		} else {
