@@ -15,6 +15,12 @@ We appretiate your contributions towards McCon! If you would like to help with t
 * The best way to help the project is to report issues and feature requests with the Issue Tracker here on github.
 * Paypal donations (rivermarmorstein@gmail.com) are also Accepted, if you must..
 
+##Setup & Datbases
+###Database Options
+The following databases will be supported.
+* **Redis** preferred.
+* MySQL
+
 ## Commands & Permissions
 ### Commands
 * **/money** [Aliases: /bal, /balance] - Display your Balance
